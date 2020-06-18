@@ -1,0 +1,163 @@
+
+   <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    
+    
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div class="site-wrap" id="home-section">
+
+  
+
+
+
+
+    <div class="owl-carousel-wrapper" id="owl-carousel-wrapper">
+
+      
+
+      <div class="box-92819">
+        <h1 class="text-white mb-3">Contact Us</h1>
+        <p class="lead text-white">Get in touch with us</p>
+        
+      </div>
+
+      
+        <div class="ftco-cover-1 overlay" style="background-image: url('/front_end/images/t_hero.jpeg');"></div>
+      
+    </div>
+    
+    
+    <div class="site-section">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-lg-8 mb-5" >
+            <form action="" method="get">
+              <div class="form-group row">
+                <div class="col-md-6 mb-4 mb-lg-0">
+                  <input type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="First name">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="Email address">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="70" rows="10"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6 mr-auto">
+                  <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5 rounded-0" value="Send Message" style="height: 50px;">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-4 ml-auto" >
+            <div class="bg-white p-3 p-md-5" >
+              
+              <h3 class="text-cursive mb-4">Contact Info</h3>
+              <ul class="list-unstyled footer-link">
+                <li class="d-block mb-3">
+                  <span class="d-block text-muted small text-uppercase font-weight-bold">Address:</span>
+                  <span>S.G. Road & Kataria Motors Sarkhej Circle Between, Ahmedabad, Gujarat 382210</span></li>
+                
+                <li class="d-block mb-3"><span class="d-block text-muted small text-uppercase font-weight-bold">Email:</span><span>prayas.ljiet@gmail.com</span></li>
+              
+
+              </ul>
+              <div id="map" style="width:100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="site-section">
+        <div class="container">
+          <center>
+                <div class="" ><h2 class="text-cursive">Follow us on <br><br><a href="https://m.facebook.com/prayas.forbetterfuture/" class="pl-3 pr-3" target="_blank"><span class="icon-facebook"></span></a>
+                <a href="https://www.instagram.com/prayas_ljiet/" class="pl-3 pr-3"  target="_blank"><span class="icon-instagram"></span></a></h2></div>
+               </center>
+          
+        </div>
+      </div>
+      <footer class="site-footer bg-white" style="padding: 0;">
+      
+           
+        <center>      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Prayas</center>
+  
+        <br>
+    
+        <span style="float: right;"><a href="#owl-carousel-wrapper">Go To Top<span style="font-size: 36px;">&#8593;</span></a> </span>
+          </footer>
+    
+    </div>
+
+      <script type="text/javascript">
+                
+                   
+      
+      showPosition();
+   
+          
+    
+       function showPosition() {
+       
+           
+         
+           //alert(long+lat);
+           mapboxgl.accessToken = 'pk.eyJ1IjoiNTEwMDU2MTAiLCJhIjoiY2psbndoMWduMWltMTNxbDRmeGRxdXNqbSJ9.mI6QwCnYcfIr27D07hnmQA';
+           var map = new mapboxgl.Map({
+           container: 'map',
+           style: 'mapbox://styles/mapbox/streets-v10',
+           center:[72.4865706,22.9900258],//long,lat
+           zoom:10.5
+           });
+           var geojson = {
+           type: 'FeatureCollection',
+           features: [{
+               type: 'Feature',
+               geometry: {
+               type: 'Point',
+               coordinates: [72.4865706,22.9900258]
+               },
+               properties: {
+               title: 'Mapbox',
+               description: 'LJ Institute of Engineering and Technology, Ahmedabad'
+               }
+           }]
+       };
+           geojson.features.forEach(function(marker) {
+   
+           // create a HTML element for each feature
+           var el = document.createElement('div');
+           el.className = 'marker';
+   
+           // make a marker for each feature and add to the map
+           new mapboxgl.Marker(el)
+           .setLngLat(marker.geometry.coordinates)
+           new mapboxgl.Marker(el)
+           .setLngLat(marker.geometry.coordinates)
+           .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+           .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+           .addTo(map);        });
+           map.addControl(new mapboxgl.NavigationControl());
+       }
+   
+            
+               </script>
+
+
+   
+
+
+
+  </body>
+
+</html>
