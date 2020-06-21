@@ -32,25 +32,22 @@
         
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form action="" method="get">
+            <form action="https://prayasportal.herokuapp.com/users/questions" method="post" id="q_form">
               <div class="form-group row">
-                <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="First name">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="Name" id="name" name="name" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Email address">
+                  <input type="email" class="form-control" placeholder="Email address" id="email" name="email" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="70" rows="10"></textarea>
+                  <textarea name="question" id="question" class="form-control" placeholder="Write your message." cols="70" rows="10" required></textarea>
                 </div>
               </div>
               <div class="form-group row">
@@ -100,7 +97,25 @@
     </div>
 
       <script type="text/javascript">
-                
+              $(document).ready(function(){
+                $("#q_form").submit(function(e){
+                  e.preventDefault();
+                  jQuery.ajax({
+                          url:'https://prayasportal.herokuapp.com/users/questions' ,
+                          type: "POST",
+                          data: {name:$("#name").val(), email:$("#email").val(),question:$("#question").val() },
+                          dataType: "json",
+                          success: function(result) {
+                              console.log(result);
+                              
+                          }
+                });  
+
+
+
+                });
+
+});
                    
       
       showPosition();
