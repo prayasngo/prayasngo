@@ -35,19 +35,19 @@
             <form action="https://prayasportal.herokuapp.com/users/questions" method="post" id="q_form">
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Name" id="name" name="name" required>
+                  <input type="text" maxlength="30" class="form-control" placeholder="Name" id="name" name="name" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Email/Contact No." id="email" name="email" required>
+                  <input type="text" maxlength="40" class="form-control" placeholder="Email/Contact No." id="email" name="email" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="question" id="question" class="form-control" placeholder="Write your message." cols="70" rows="10" required></textarea>
+                  <textarea name="question" maxlength="200" id="question" class="form-control" placeholder="Write your message." cols="70" rows="10" required></textarea>
                 </div>
               </div>
               <div class="form-group row">
@@ -106,8 +106,13 @@
                           data: {name:$("#name").val(), email:$("#email").val(),question:$("#question").val() },
                           dataType: "json",
                           success: function(result) {
+                            console.log(result);
                               alert("Thank You for contacting us,We will get back to you soon");
                               
+                          },
+                          error:function(err)
+                          {
+                            console.log("Error:",err);
                           }
                 });  
 
